@@ -146,124 +146,19 @@ const formState = ref({
     {
       name: "United States",
       label: "美国",
-      color: "",
+      color: "rgba(73, 227, 7, 0.56)",
       fontColor: "#000",
     },
-    {
-      name: "Japan",
-      label: "日本",
-      color: "",
-      fontColor: "#000",
-    },
-
     {
       name: "China",
       label: "中国",
-      color: "",
-      fontColor: "#000",
+      color: "rgba(227, 11, 11, 1)",
+      fontColor: "#fff",
     },
-    {
-      name: "Korea",
-      label: "韩国",
-      color: "",
-      fontColor: "#000",
-    },
+    
   ],
 });
-const chartOption = ref({
-  // 标题配置
-  title: {
-    show: Boolean(formState.value.showTitle),
-    text: "一级标题xxxxxxx", // 1级标题
-    textStyle: {
-      fontSize: 24,
-    },
-    textAlign: "center",
-    subtext: "二级标题xxxxxxx", //2级标题
-    subtextStyle: {
-      fontSize: 16,
-    },
-    //2级标题点击跳转地址
-    left: "50%", // 标题的位置
-  },
-  tooltip: {
-    trigger: "item",
-    showDelay: 0,
-    transitionDuration: 0.2,
-  },
-  visualMap: {
-    show: false,
-    left: "right",
-    // 数据最小值
-    min: 0,
-    // 数据最大值
-    max: 100,
-    // 数据值区间颜色配置
-    inRange: {
-      color: [
-        "#9c9ac7",
-        "#d16b91",
-        "#fe994e",
-        "yellow",
-        "lightskyblue",
-        "#8ccbe3",
-      ],
-    },
-    // 数据区间轴描述
-    text: ["High", "Low"],
-    // 是否允许拖拽数据轴来显示对应的区间
-    calculable: true,
-  },
-  // 工具栏设置
-  toolbox: {
-    show: true,
-    //orient: 'vertical',
-    //工具栏的位置
-    left: "left",
-    top: "top",
-    feature: {
-      dataView: { readOnly: false },
-      restore: {},
-      saveAsImage: {},
-    },
-  },
-  series: [
-    {
-      // 数据系列名称，用于tooltip的显示。
-      name: "xxxxx数据展示",
-      type: "map",
-      // 是否允许鼠标的缩放和拖动
-      roam: true,
-      // 使用 registerMap 注册的地图名称。
-      map: "World",
-      label: {
-        show: true,
-        fontSize: 14,
-        formatter(e) {
-          let showLabel = "";
-          showArr.map((item) => {
-            if (item.name == e.name) {
-              showLabel = item.label;
-            }
-          });
-          return showLabel;
-        },
-      },
-      emphasis: {
-        label: {
-          show: true,
-        },
-      },
-      // 数据集， name：国家名字，value:数值
-      data: [
-        { name: "United States", value: 20 },
-        { name: "Japan", value: 0 },
-        { name: "China", value: 60 },
-        { name: "Korea", value: 90 },
-      ],
-    },
-  ],
-});
+const chartOption = ref({});
 let myChart = null;
 const showArr = [
   {
@@ -288,7 +183,7 @@ onMounted(() => {
   myChart = eCharts.init(document.getElementById("eChartsBox"));
   myChart.showLoading();
   eCharts.registerMap("World", worldGeo as any);
-  chartRender();
+  saveOption()
 });
 const saveOption = () => {
   myChart.showLoading();
