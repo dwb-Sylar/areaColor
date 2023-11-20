@@ -19,6 +19,13 @@ const routes = [
     },
   },
   {
+    path: '/continent',
+    component:()=>import('@/views/continent/index.vue'),
+    meta: {
+      title: '洲际地图',
+    },
+  },
+  {
     path: '/world',
     component:()=>import('@/views/world/index.vue'),
     meta: {
@@ -32,6 +39,7 @@ const routes = [
       title: '中国地图',
     },
   },
+  
 ]
 
 const router = createRouter({

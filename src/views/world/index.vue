@@ -9,10 +9,10 @@
 <template>
   <div class="page">
     <div class="eCharts-setting">
-      <el-button label="运行" @click="saveOption" type="primary">
-        运行
+      <el-button label="运行" @click="saveOption" type="primary" class="setting-btn">
+        生成图表
       </el-button>
-      <el-form label-position="top">
+      <el-form label-position="top" class="setting-form">
         <el-card header="标题设置">
           <template #header>
             <div class="card-header">
@@ -258,7 +258,7 @@ const saveOption = () => {
       left: "left",
       top: "top",
       feature: {
-        dataView: { readOnly: false },
+        // dataView: { readOnly: false },
         restore: {},
         saveAsImage: {},
       },
@@ -319,6 +319,16 @@ const chartRender = () => {
 .eCharts-setting {
   width: 450px;
   border: 1px solid #ccc;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+}
+.setting-btn{
+  margin-bottom: 10px;
+}
+.setting-form{
+  flex:1;
+  overflow: auto;
 }
 #eChartsBox {
   flex: 1;
